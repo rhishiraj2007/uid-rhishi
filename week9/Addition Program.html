@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Multiplication Program</title>
+        <script>
+            function add ()
+            {
+                let a = parseInt(document.addition.num1.value);
+                let b = parseInt(document.addition.num2.value);
+                let reult = a * b;
+                alert("The result is " + reult);
+            }
+        </script>
+    </head>
+    <body>
+        <form name="addition">
+            <input type="text" name="num1" placeholder="Enter first number">
+            <input type="text" name="num2" placeholder="Enter second number">
+            <input type="button" value="Calculate" onclick="add()">
+        </form>
+    </body>
+</html>

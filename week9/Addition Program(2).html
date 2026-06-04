@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Addition Program</title>
+        <script>
+            function add(){
+                let a = parseInt(document.getElementById("one").value);
+                let b = parseInt(document.getElementById("two").value);
+                let result = a + b;
+                alert("The result is " + result);
+            }
+        </script>
+    </head>
+    <body>
+        <form>
+            Number 1: <input type="text" id="one"><br><br>
+            Number 2: <input type="text" id="two"><br><br>
+            <input type="button" value="Calculate" onclick="add()">
+        </form>
+    </body>
+</html>

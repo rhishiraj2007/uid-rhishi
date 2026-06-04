@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form with Email Validation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
+        }
+
+        input.error {
+            border-color: #e74c3c;
+            background-color: #fadbd8;
+        }
+
+        input.success {
+            border-color: #27ae60;
+            background-color: #d5f4e6;
+        }
+
+        .error-message {
+            color: #e74c3c;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        .success-message {
+            color: #27ae60;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .form-info {
+            background-color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 13px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .success-alert {
+            background-color: #d5f4e6;
+            color: #27ae60;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            display: none;
+            font-weight: 600;
+        }
+
+        .success-alert.show {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Registration Form</h1>
+
+        <div class="success-alert" id="successAlert">
+            ✓ Registration successful! Welcome!
+        </div>
+
+        <div class="form-info">
+            <strong>Email Format Requirements:</strong>
+            <ul style="margin-left: 15px; margin-top: 8px;">
+                <li>Must contain @ symbol</li>
+                <li>Must have domain name</li>
+                <li>Must have valid extension (.com, .org, etc.)</li>
+            </ul>
+        </div>
+
+        <form id="registrationForm" novalidate>
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" name="firstName" placeholder="Enter your first name" required>
+                <div class="error-message" id="firstNameError">First name is required</div>
+            </div>
+
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" name="lastName" placeholder="Enter your last name" required>
+                <div class="error-message" id="lastNameError">Last name is required</div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="example@domain.com" required>
+                <div class="error-message" id="emailError">Please enter a valid email address</div>
+                <div class="success-message" id="emailSuccess">✓ Email is valid</div>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter a strong password" required>
+                <div class="error-message" id="passwordError">Password must be at least 6 characters</div>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password"
+                    required>
+                <div class="error-message" id="confirmPasswordError">Passwords do not match</div>
+            </div>
+
+            <button type="submit">Register</button>
+        </form>
+    </div>
+
+    <script>
+        // Email validation regex pattern
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        // Get form elements
+        const form = document.getElementById('registrationForm');
+        const emailInput = document.getElementById('email');
+        const firstNameInput = document.getElementById('firstName');
+        const lastNameInput = document.getElementById('lastName');
+        const passwordInput = document.getElementById('password');
+        const confirmPasswordInput = document.getElementById('confirmPassword');
+        const successAlert = document.getElementById('successAlert');
+
+        // Real-time email validation as user types
+        emailInput.addEventListener('input', function () {
+            validateEmail();
+        });
+
+        // Email validation function
+        function validateEmail() {
+            const email = emailInput.value.trim();
+            const errorMsg = document.getElementById('emailError');
+            const successMsg = document.getElementById('emailSuccess');
+
+            if (email === '') {
+                emailInput.classList.remove('success', 'error');
+                errorMsg.classList.remove('show');
+                successMsg.classList.remove('show');
+                return false;
+            }
+
+            // Check email format using regex
+            if (emailPattern.test(email)) {
+                emailInput.classList.remove('error');
+                emailInput.classList.add('success');
+                errorMsg.classList.remove('show');
+                successMsg.classList.add('show');
+                return true;
+            } else {
+                emailInput.classList.remove('success');
+                emailInput.classList.add('error');
+                errorMsg.classList.add('show');
+                successMsg.classList.remove('show');
+                return false;
+            }
+        }
+
+        // Form submission handler
+        form.addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Validate all fields
+            let isValid = true;
+
+            // Validate first name
+            if (firstNameInput.value.trim() === '') {
+                document.getElementById('firstNameError').classList.add('show');
+                firstNameInput.classList.add('error');
+                isValid = false;
+            } else {
+                document.getElementById('firstNameError').classList.remove('show');
+                firstNameInput.classList.remove('error');
+            }
+
+            // Validate last name
+            if (lastNameInput.value.trim() === '') {
+                document.getElementById('lastNameError').classList.add('show');
+                lastNameInput.classList.add('error');
+                isValid = false;
+            } else {
+                document.getElementById('lastNameError').classList.remove('show');
+                lastNameInput.classList.remove('error');
+            }
+
+            // Validate email
+            if (!validateEmail()) {
+                isValid = false;
+            }
+
+            // Validate password
+            if (passwordInput.value.length < 6) {
+                document.getElementById('passwordError').classList.add('show');
+                passwordInput.classList.add('error');
+                isValid = false;
+            } else {
+                document.getElementById('passwordError').classList.remove('show');
+                passwordInput.classList.remove('error');
+            }
+
+            // Validate password confirmation
+            if (passwordInput.value !== confirmPasswordInput.value) {
+                document.getElementById('confirmPasswordError').classList.add('show');
+                confirmPasswordInput.classList.add('error');
+                isValid = false;
+            } else {
+                document.getElementById('confirmPasswordError').classList.remove('show');
+                confirmPasswordInput.classList.remove('error');
+            }
+
+            // If all validations pass, submit the form
+            if (isValid) {
+                successAlert.classList.add('show');
+                console.log('Form submitted successfully with data:', {
+                    firstName: firstNameInput.value,
+                    lastName: lastNameInput.value,
+                    email: emailInput.value,
+                    password: passwordInput.value
+                });
+
+                // Reset form after 2 seconds
+                setTimeout(() => {
+                    form.reset();
+                    successAlert.classList.remove('show');
+                    emailInput.classList.remove('success');
+                }, 2000);
+            } else {
+                console.log('Form validation failed');
+                alert('Please fix the errors above and try again.');
+            }
+        });
+    </script>
+</body>
+
+</html>

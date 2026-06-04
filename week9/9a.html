@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Number Checker</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: #081528;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+        input {
+            width: 100%;
+            padding: 0.75rem;
+            font-size: 1.1rem;
+            border: 1px solid #183758;
+            border-radius: 0.5rem;
+            box-sizing: border-box;
+            margin-bottom: 1rem;
+        }
+        button {
+            background: #183758;
+            color: #17A699;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            margin: 0.25rem;
+            transition: background 0.2s;
+        }
+        button:hover {
+            background: #005a9e;
+        }
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+            margin: 1rem 0;
+        }
+        #output {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: #C85F66;
+            border: 1px solid #eee;
+            border-radius: 0.5rem;
+            min-height: 3rem;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+        h1 {
+            text-align: center;
+            color: #17A699;
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Number Checker</h1>
+    
+    <input type="number" id="numInput" placeholder="Enter a number">
+    
+    <div class="button-container">
+        <button onclick="checkEven()">Check Even</button>
+        <button onclick="checkOdd()">Check Odd</button>
+        <button onclick="checkPrime()">Check Prime</button>
+        <button onclick="getFactorial()">Factorial</button>
+        <button onclick="checkArmstrong()">Check Armstrong</button>
+    </div>
+    
+    <div id="output"></div>
+
+    <script>
+        var display = document.getElementById("output");
+  
+        // Simple helper to get the number
+        function getNumber() {
+            return Number(document.getElementById("numInput").value);
+        }
+
+        // 1. Check Even
+        function checkEven() {
+            var num = getNumber();
+            if (num % 2 == 0) {
+                display.innerHTML = num + " is Even.";
+            } else {
+                display.innerHTML = num + " is NOT Even.";
+            }
+        }
+
+        // 2. Check Odd
+        function checkOdd() {
+            var num = getNumber();
+            if (num % 2 != 0) {
+                display.innerHTML = num + " is Odd.";
+            } else {
+                display.innerHTML = num + " is NOT Odd.";
+            }
+        }
+
+        // 3. Check Prime
+        function checkPrime() {
+            var num = getNumber();
+            if (num <= 1) {
+                display.innerHTML = num + " is NOT Prime.";
+                return;
+            }
+            for (var i = 2; i <= Math.sqrt(num); i++) {
+                if (num % i == 0) {
+                    display.innerHTML = num + " is NOT Prime.";
+                    return;
+                }
+            }
+            display.innerHTML = num + " is Prime.";
+        }
+
+        // 4. Factorial
+        function getFactorial() {
+            var num = getNumber();
+            if (num < 0) {
+                display.innerHTML = "Factorial not defined for negative numbers.";
+                return;
+            }
+            var fact = 1;
+            for (var i = 1; i <= num; i++) {
+                fact *= i;
+            }
+            display.innerHTML = "Factorial of " + num + " is " + fact + ".";
+        }
+
+        // 5. Check Armstrong
+        function checkArmstrong() {
+            var num = getNumber();
+            var originalNum = num;
+            var sum = 0;
+            var digits = num.toString().length;
+            while (num > 0) {
+                var digit = num % 10;
+                sum += Math.pow(digit, digits);
+                num = Math.floor(num / 10);
+            }
+            if (sum == originalNum) {
+                display.innerHTML = originalNum + " is an Armstrong number.";
+            } else {
+                display.innerHTML = originalNum + " is NOT an Armstrong number.";
+            }
+        }
+    </script>
+
+</body>
+</html>

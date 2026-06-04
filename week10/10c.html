@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+     <title>Largest of Five Numbers</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial;
+            margin-top: 50px;
+            color: #17A699;
+            background-color: #081528;
+        }
+        input {
+            padding: 8px;
+            margin: 5px;
+            width: 150px;
+            background-color: #183758;
+            border: 1px solid #17A699;
+            color: #17A699;
+        }
+        button {
+            color: #183758;
+            padding: 10px 20px;
+            margin-top: 10px;
+            background-color: #17A699;
+            border: 1px solid #183758;
+        }
+        </style>
+</head>
+<body>
+    <h2>Find Largest of Five Numbers</h2>
+
+<input type="number" id="n1" placeholder="Enter number 1"><br>
+<input type="number" id="n2" placeholder="Enter number 2"><br>
+<input type="number" id="n3" placeholder="Enter number 3"><br>
+<input type="number" id="n4" placeholder="Enter number 4"><br>
+<input type="number" id="n5" placeholder="Enter number 5"><br>
+
+<button onclick="findLargest()">Find Largest</button>
+
+<script>
+    function findLargest() {
+        let a = Number(document.getElementById("n1").value);
+        let b = Number(document.getElementById("n2").value);
+        let c = Number(document.getElementById("n3").value);
+        let d = Number(document.getElementById("n4").value);
+        let e = Number(document.getElementById("n5").value);
+
+        let largest;
+
+        if (a >= b && a >= c && a >= d && a >= e) {
+            largest = a;
+        } 
+        else if (b >= a && b >= c && b >= d && b >= e) {
+            largest = b;
+        } 
+        else if (c >= a && c >= b && c >= d && c >= e) {
+            largest = c;
+        } 
+        else if (d >= a && d >= b && d >= c && d >= e) {
+            largest = d;
+        } 
+        else {
+            largest = e;
+        }
+
+        alert("The largest number is: " + largest);
+    }
+</script>
+
+    
+</body>
+</html>

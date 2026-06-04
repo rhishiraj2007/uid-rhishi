@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Register</h1>
+        <form id="registrationForm">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <button type="submit">Register</button>
+        </form>
+        <div id="message" class="message"></div>
+    </div>
+    <script >
+        document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('registrationForm');
+    const messageDiv = document.getElementById('message');
+
+    form.addEventListener('submit', function(event) {
+        const email = document.getElementById('email').value;
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!emailRegex.test(email)) {
+            event.preventDefault(); // Prevent form submission
+            messageDiv.textContent = 'Please enter a valid email address.';
+            messageDiv.classList.add('show');
+        } else {
+            messageDiv.textContent = ''; // Clear message if valid
+            messageDiv.classList.remove('show');
+            // Form will submit normally
+        }
+    });
+});
+    </script>
+</body>
+</html>

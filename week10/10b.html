@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+<script>
+    function sortNumbers(a, b, c) {
+        let result;
+
+        if (a >= b && a >= c) {
+            if (b >= c) {
+                result = a + ", " + b + ", " + c;
+            } else {
+                result = a + ", " + c + ", " + b;
+            }
+        } 
+        else if (b >= a && b >= c) {
+            if (a >= c) {
+                result = b + ", " + a + ", " + c;
+            } else {
+                result = b + ", " + c + ", " + a;
+            }
+        } 
+        else {
+            if (a >= b) {
+                result = c + ", " + a + ", " + b;
+            } else {
+                result = c + ", " + b + ", " + a;
+            }
+        }
+
+        return "Sorted numbers (descending): " + result;
+    }
+
+    let num1 = Number(prompt("Enter first number:"));
+    let num2 = Number(prompt("Enter second number:"));
+    let num3 = Number(prompt("Enter third number:"));
+
+    alert(sortNumbers(num1, num2, num3));
+</script>
+
+</body>
+</html>

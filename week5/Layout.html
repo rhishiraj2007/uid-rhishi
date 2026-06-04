@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Responsive Card Layout</title>
+        <style>
+            body {
+                background-image: url('https://tse1.mm.bing.net/th/id/OIP.pA_FLzM7buED9J1d47SfnAHaEo?rs=1&pid=ImgDetMain&o=7&rm=3');
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center;
+                margin: 0;
+                height: 100vh;
+            }
+            .card_container {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                min-height: 100vh;
+            }
+            .card{
+               width: 400px;
+               height: 500px;
+               background-color: rgba(255, 255, 255, 0.25);
+               -webkit-backdrop-filter: blur(12px);
+               backdrop-filter: blur(12px);
+               border-radius: 10px;
+               overflow: hidden;
+               margin: 10px 10px 10px 10px;
+               padding: 20px;
+               text-align: center;
+            }
+            .card img{
+                 width: 100%;
+                 height: 200px;
+                 object-fit: cover;
+                 border-radius: 10px;
+                 
+            }
+            h1 {
+                text-align: center;
+                color: black;
+            }
+            p {
+                color: black;
+            }
+            button{
+                background-color:rgba(255, 255, 255, 0.25);
+                color: blue;
+            }
+            .card button:hover{
+                background-color: aqua;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="card_container">
+            <div class="card">
+                <h1>Steam</h1>
+                <img src="https://tse1.mm.bing.net/th/id/OIP.Ih6y0JnKgZzcek2rbMgVcQHaEo?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Steam logo">
+                <p>Steam is a digital distribution service and storefront developed by Valve Corporation. Steam offers various features, such as game server matchmaking with Valve Anti-Cheat (VAC) measures, social networking, and game streaming services. The Steam client functions include update maintenance, cloud storage, and community features such as direct messaging, an in-game overlay, discussion forums, and a virtual collectable marketplace.</p>
+               <a href="https://store.steampowered.com/" target="_blank" rel="noopener">
+                <button>Learn More</button>
+               </a>
+            </div>
+            <div class="card">
+                <h1>Epic Games</h1>
+                <img src="https://tse3.mm.bing.net/th/id/OIP.-YuAHNVqea3N0Hmj_i96hgHaEK?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Epic Games logo">
+                <p>Epic Games, Inc. is an American video game and software developer and publisher based in Cary, North Carolina.Following its first commercial video game release, ZZT (1991), the company became Epic MegaGames, Inc. in early 1992 and brought on Mark Rein, who has been its vice president since. After moving the headquarters to Cary in 1999, the studio changed its name to Epic Games.</p>
+                <a href="https://www.epicgames.com/" target="_blank" rel="noopener">
+                <button>Learn More</button>
+               </a>
+            </div>
+            <div class="card">
+                <h1>Riot Games</h1>
+                <img src="https://www.bleepstatic.com/content/hl-images/2023/01/21/Riot_Games_headpic.jpg" alt="Riot Games">
+                <P>Riot Games, Inc. is an American video game developer, publisher, and esports tournament organizer based in Los Angeles. Its publishing arm, Riot Forge, oversaw the production of League of Legends spin-offs by other developers until its shutdown in January 2024. The company worked with Fortiche to release Arcane, a television series based on the League of Legends universe.</P>
+                <a href="https://www.riotgames.com/" target="_blank" rel="noopener">
+                <button>Learn More</button>
+               </a>
+            </div>
+        </div>
+    </body>
+</html>

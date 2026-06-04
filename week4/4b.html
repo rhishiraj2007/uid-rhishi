@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integrated Auth Portal</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .portal-container {
+            background-color: #ffffff; 
+            padding: 50px;
+            display: flex;
+            gap: 30px;
+            border: 2px solid #0b3d52;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            border-radius: 4px;
+        }
+
+        iframe {
+            width: 320px;
+            height: 400px;
+            background-color: white;
+            border: 2px solid #000;
+            border-radius: 2px;
+        }
+
+        .student-info {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 14px;
+            color: #333;
+            margin: 0;
+            font-weight: 500;
+        }
+
+        
+    </style>
+    
+</head>
+<body>
+    <p class="student-info">Rhishiraj Thalakkat CSE25147</p>
+    
+
+    <div class="portal-container">
+        
+        <iframe title="Login" srcdoc="
+            <style>
+                body { font-family: sans-serif; padding: 25px; text-align: center; color: #333; }
+                input { width: 90%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px; }
+                button { width: 95%; padding: 10px; background: #1a5f7a; color: white; border: none; cursor: pointer; border-radius: 4px; margin-top: 10px; }
+                button:hover { background: #144a5f; }
+            </style>
+            <h2>User Login</h2>
+            <input type='text' placeholder='Username'>
+            <input type='password' placeholder='Password'>
+            <button>login</button>
+        "></iframe>
+
+        <iframe title="Register" srcdoc="
+            <style>
+                body { font-family: sans-serif; padding: 25px; text-align: center; color: #333; }
+                input { width: 90%; padding: 10px; margin: 8px 0; border: 1px solid #ccc; border-radius: 4px; }
+                button { width: 95%; padding: 10px; background: #1a5f7a; color: white; border: none; cursor: pointer; border-radius: 4px; margin-top: 10px; }
+                button:hover { background: #144a5f; }
+            </style>
+            <h2>User Registration</h2>
+            <p>Create a new account</p>
+            <input type='text' placeholder='Full Name'>
+            <input type='email' placeholder='Email Address'>
+            <input type='password' placeholder='Create Password'>
+            <button>register</button><br><button>reset</button>
+        "></iframe>
+
+    </div>
+
+</body>
+</html>
