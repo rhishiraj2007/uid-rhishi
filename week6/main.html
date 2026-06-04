@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Documents</title>
+    <style>
+        .container {
+            display: grid;
+            grid-template-areas:
+                "header header"
+                "sale sale"
+                "sidebar products"
+                "footer footer";
+            grid-template-columns: 15% auto;
+            grid-template-rows: auto auto 1fr auto;
+            border: 1px solid black;
+            gap: 5px;
+            background-color: #222;
+        }
+
+        .header {
+            grid-area: header;
+            border: 1px solid black;
+            text-align: center;
+        }
+
+        .sale {
+            grid-area: sale;
+            border: 1px solid black;
+            text-align: center;
+            padding-top: 0px;
+            padding-bottom: 0px;
+            background-color: #28a745;
+            color: rgb(0, 0, 0);
+            font-size: large;
+        }
+
+        .sidebar {
+            grid-area: sidebar;
+            text-align: center;
+            border: 1px solid black;
+            border-radius: 5px;
+            background-color: white;
+            font-weight: bold;
+        }
+
+        .sidebar:hover {
+            transform: scale(1.03);
+        }
+
+        .sidebar a {
+            font-size: large;
+            text-decoration: none;
+            color: black;
+        }
+
+        .sidebar th {
+            border: 1px solid black;
+        }
+
+        .sidebar th:hover {
+            background-color: lightgrey;
+            transform: scale(1.1);
+        }
+
+        .products {
+            grid-area: products;
+        }
+
+        .products iframe {
+            grid-area: products;
+            width: 100%;
+            height: 750px;
+            border: none;
+        }
+
+        .footer {
+            grid-area: footer;
+            border: 1px solid black;
+            text-align: center;
+            background-color: #333;
+            color: rgb(255, 255, 255);
+        }
+    </style>
+</head>
+<body>
+    <p>Rhishiraj Thalakkat cse25147</p>
+    <div class="container">
+        <div class="header">
+            <h1 style="color: white;">Amrita E commerce</h1>
+        </div>
+
+        <div class="sale">
+            <marquee><p>Products currently under sale</p></marquee>
+        </div>
+
+        <div class="sidebar">
+            <table cellpadding="10" align="center" cellspacing="10">
+                <tr>
+                    <td><h1>Products</h1></td>
+                </tr>
+                <tr>
+                    <th><a href="Product1.html" target="product_frame">Electronics</a></th>
+                </tr>
+                <tr>
+                    <th><a href="Product2.html" target="product_frame">Sports</a></th>
+                </tr>
+                <tr>
+                    <th><a href="Product3.html" target="product_frame">Accessories</a></th>
+                </tr>
+                <tr>
+                    <th><a href="Product4.html" target="product_frame">Clothing</a></th>
+                </tr>
+            </table>
+        </div>
+
+        <div class="products">
+            <iframe name="product_frame" src="6a1.html"></iframe>
+        </div>
+
+        <div class="footer">
+            <p>for more information visit <a href="mailto:">link</a></p>
+        </div>
+    </div>
+</body>
+</html>
